@@ -1,0 +1,43 @@
+Acciones
+
+cortar | ajo | cebolla | perejil
+mezclar
+salar
+cortar lechuga y tomate
+hornear
+armar medallones
+cocinar medallones
+armar hamburguesas
+
+                                                 mutex()                  
+cortar()               cortarlechugaytom           hornear1pan()          
+   v(s_mezclar)           v(s_armarhambu)            v(s_armarhambu)      
+                                                 mutex()                
+p(s_cortar)
+mezclar()
+   v(s_salar)
+
+p(s_mezclar)
+mutex()     //para que un solo hilo se ejecute
+  salar()
+mutex()
+  v(s_armarmedallon)
+
+p(s_salar)
+armarmedallon()
+  v(s_cocinar)
+
+p(s_armarmedallon)
+mutex()
+  cocinar()
+mutex()
+  v(s_armarhambu)
+
+p(s_cocinar)
+p(s_cortarlechugaytom)
+p(s_hornearpan)
+  armarhambu()
+
+
+
+
